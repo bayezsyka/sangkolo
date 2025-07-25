@@ -3,9 +3,6 @@
         <div class="flex justify-between items-center h-16 md:h-20">
             <div class="flex-shrink-0 flex items-center">
                 <a href="{{ route('landing') }}" class="text-white text-2xl font-bold tracking-tight hover:text-gray-200 transition duration-300 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2 text-[#aeaeae]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
                     SANGKOLO
                 </a>
             </div>
@@ -27,13 +24,13 @@
                          x-transition:leave-start="opacity-100 scale-100"
                          x-transition:leave-end="opacity-0 scale-95"
                          class="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-[#5c5c5c] ring-1 ring-[#383838] ring-opacity-5 focus:outline-none p-1">
-                        <a href="#" class="block px-4 py-2.5 text-sm text-white hover:bg-[#909090] hover:text-white rounded-md transition duration-150">Jasa Design</a>
-                        <a href="#" class="block px-4 py-2.5 text-sm text-white hover:bg-[#909090] hover:text-white rounded-md transition duration-150">Jasa Fotografer & Videografer</a>
-                        <a href="#" class="block px-4 py-2.5 text-sm text-white hover:bg-[#909090] hover:text-white rounded-md transition duration-150">Jasa Pembuatan Website</a>
-                        <a href="#" class="block px-4 py-2.5 text-sm text-white hover:bg-[#909090] hover:text-white rounded-md transition duration-150">Jasa Pembuatan Perangkat IoT</a>
+                        <a href="#modal-pengembangan" class="block px-4 py-2.5 text-sm text-white hover:bg-[#909090] hover:text-white rounded-md transition duration-150">Jasa Design</a>
+                        <a href="#modal-pengembangan" class="block px-4 py-2.5 text-sm text-white hover:bg-[#909090] hover:text-white rounded-md transition duration-150">Jasa Fotografer & Videografer</a>
+                        <a href="#modal-pengembangan" class="block px-4 py-2.5 text-sm text-white hover:bg-[#909090] hover:text-white rounded-md transition duration-150">Jasa Pembuatan Website</a>
+                        <a href="#modal-pengembangan" class="block px-4 py-2.5 text-sm text-white hover:bg-[#909090] hover:text-white rounded-md transition duration-150">Jasa Pembuatan Perangkat IoT</a>
                     </div>
                 </div>
-                <a href="#" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:bg-[#5c5c5c]">Kaos Custom</a>
+                <a href="#modal-pengembangan" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:bg-[#5c5c5c]">Kaos Custom</a>
                 <a href="{{ route('joki-tugas.index') }}" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:bg-[#5c5c5c]">Joki Tugas</a>
             </div>
 
@@ -69,13 +66,13 @@
                     </svg>
                 </button>
                 <div x-show="mobileSubMenuOpen" x-cloak class="pl-4 space-y-1 mt-1">
-                    <a href="#" class="block px-3 py-2 text-white hover:text-gray-200 hover:bg-[#909090] rounded-md text-sm font-medium">Jasa Design</a>
-                    <a href="#" class="block px-3 py-2 text-white hover:text-gray-200 hover:bg-[#909090] rounded-md text-sm font-medium">Jasa Fotografer & Videografer</a>
-                    <a href="#" class="block px-3 py-2 text-white hover:text-gray-200 hover:bg-[#909090] rounded-md text-sm font-medium">Jasa Pembuatan Website</a>
-                    <a href="#" class="block px-3 py-2 text-white hover:text-gray-200 hover:bg-[#909090] rounded-md text-sm font-medium">Jasa Pembuatan Perangkat IoT</a>
+                    <a href="#modal-pengembangan" class="block px-3 py-2 text-white hover:text-gray-200 hover:bg-[#909090] rounded-md text-sm font-medium">Jasa Design</a>
+                    <a href="#modal-pengembangan" class="block px-3 py-2 text-white hover:text-gray-200 hover:bg-[#909090] rounded-md text-sm font-medium">Jasa Fotografer & Videografer</a>
+                    <a href="#modal-pengembangan" class="block px-3 py-2 text-white hover:text-gray-200 hover:bg-[#909090] rounded-md text-sm font-medium">Jasa Pembuatan Website</a>
+                    <a href="#modal-pengembangan" class="block px-3 py-2 text-white hover:text-gray-200 hover:bg-[#909090] rounded-md text-sm font-medium">Jasa Pembuatan Perangkat IoT</a>
                 </div>
             </div>
-            <a href="#" class="text-white hover:text-gray-200 hover:bg-[#909090] block px-3 py-2 rounded-md text-base font-medium">Kaos Custom</a>
+            <a href="#modal-pengembangan" class="text-white hover:text-gray-200 hover:bg-[#909090] block px-3 py-2 rounded-md text-base font-medium">Kaos Custom</a>
             <a href="{{ route('joki-tugas.index') }}" class="text-white hover:text-gray-200 hover:bg-[#909090] block px-3 py-2 rounded-md text-base font-medium">Joki Tugas</a>
         </div>
     </div>

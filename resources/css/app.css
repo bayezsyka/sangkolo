@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* CSS untuk Modal dengan metode :target */
+.modal-target {
+    display: none; /* Secara default, modal disembunyikan */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-target:target {
+    display: flex; /* Modal akan tampil jika ID-nya menjadi target di URL */
+    opacity: 1;
+}
