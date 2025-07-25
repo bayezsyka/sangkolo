@@ -44,9 +44,9 @@ Route::middleware('auth')->group(function () {
         Route::patch('/jokers/{user}/approve', [JokerController::class, 'approve'])->name('jokers.approve');
         Route::patch('/jokers/{user}/toggle-busy', [JokerController::class, 'toggleBusy'])->name('jokers.toggleBusy');
         Route::resource('jokers', JokerController::class)->except(['create', 'store', 'show']);
-
-        // Route untuk Manajemen Testimoni
         Route::resource('testimonials', TestimonialController::class);
+        Route::post('testimonials/upload', [TestimonialController::class, 'upload'])->name('testimonials.upload');
+        Route::delete('testimonials/{testimonial}/image', [TestimonialController::class, 'destroyImage'])->name('testimonials.image.destroy');
     });
 
 });

@@ -234,19 +234,24 @@
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @forelse ($testimonials as $testimonial)
-            <div class="bg-[#383838]/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div class="aspect-w-1 aspect-h-1 w-full">
-                    <img class="w-full h-full object-cover"
-                         src="{{ asset('storage/' . $testimonial->image_proof) }}"
-                         alt="Testimoni dari {{ $testimonial->customer_name }}"
-                         loading="lazy">
+            <div class="bg-[#383838]/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg flex flex-col">
+                {{-- Container untuk gambar dengan background --}}
+                <div class="h-64 bg-black flex items-center justify-center p-2">
+                    <img class="max-h-full w-auto object-contain"
+                        src="{{ asset('storage/' . $testimonial->image_proof) }}"
+                        alt="Testimoni dari {{ $testimonial->customer_name }}"
+                        loading="lazy">
                 </div>
-                <div class="p-6">
+
+                {{-- Konten teks --}}
+                <div class="p-6 flex-grow flex flex-col">
                     <h3 class="font-bold text-white text-lg">{{ $testimonial->customer_name }}</h3>
                     <p class="text-sm text-[#aeaeae]">{{ $testimonial->customer_origin }}</p>
-                    <p class="mt-3 text-sm font-medium text-white bg-[#5c5c5c]/50 backdrop-blur-sm inline-block px-3 py-1 rounded-lg">
-                        {{ $testimonial->service_used }}
-                    </p>
+                    <div class="mt-auto pt-3">
+                        <p class="text-sm font-medium text-white bg-[#5c5c5c]/50 inline-block px-3 py-1 rounded-lg">
+                            {{ $testimonial->service_used }}
+                        </p>
+                    </div>
                 </div>
             </div>
             @empty

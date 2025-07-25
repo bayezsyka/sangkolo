@@ -52,7 +52,7 @@
                                             </button>
                                         </form>
                                         <a href="{{ route('admin.jokers.edit', $joker->id) }}" class="text-sm bg-gray-600 hover:bg-gray-700 text-white py-1.5 px-4 rounded-lg transition-colors duration-150">Edit</a>
-                                        <form action="{{ route('admin.jokers.destroy', $joker->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus joker ini secara permanen?');">
+                                        <form action="{{ route('admin.jokers.destroy', $joker->id) }}" method="POST" class="form-delete">
                                             @csrf @method('DELETE')
                                             <button class="text-sm bg-red-600 hover:bg-red-700 text-white py-1.5 px-4 rounded-lg transition-colors duration-150">Hapus</button>
                                         </form>

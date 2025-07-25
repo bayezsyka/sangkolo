@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'sweetalert2/src/sweetalert2.scss';
 
 /* CSS untuk Modal dengan metode :target */
 .modal-target {

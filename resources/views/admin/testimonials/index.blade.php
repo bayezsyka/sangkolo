@@ -23,7 +23,7 @@
                             <td class="w-1/3 text-left py-3 px-4">{{ $testimonial->service_used }}</td>
                             <td class="text-left py-3 px-4">
                                 <a href="{{ route('admin.testimonials.edit', $testimonial) }}" class="text-blue-500 hover:text-blue-700 mr-4">Edit</a>
-                                <form action="{{ route('admin.testimonials.destroy', $testimonial) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus testimoni ini?');">
+                                <form action="{{ route('admin.testimonials.destroy', $testimonial) }}" method="POST" class="inline-block form-delete"">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:text-red-700">Hapus</button>
