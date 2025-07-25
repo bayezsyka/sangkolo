@@ -1,4 +1,3 @@
-{{-- 1. Deklarasikan x-data di elemen <header> sebagai induk --}}
 <header x-data="{ mobileMenuOpen: false }" class="bg-[#383838] shadow-lg sticky top-0 z-50 backdrop-blur-sm bg-opacity-95 border-b border-[#5c5c5c]">
     <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16 md:h-20">
@@ -39,7 +38,6 @@
             </div>
 
             <div class="lg:hidden flex items-center">
-                {{-- 2. Hapus x-data dari tombol ini --}}
                 <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-200 hover:bg-[#5c5c5c] focus:outline-none">
                     <span class="sr-only">Open main menu</span>
                     <svg x-show="!mobileMenuOpen" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -53,7 +51,6 @@
         </div>
     </nav>
 
-    {{-- 3. Hapus x-data dari panel menu ini --}}
     <div x-show="mobileMenuOpen" x-cloak 
          @click.away="mobileMenuOpen = false"
          x-transition:enter="transition ease-out duration-100"
@@ -65,7 +62,7 @@
          class="lg:hidden bg-[#5c5c5c] shadow-xl rounded-b-lg">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <div x-data="{ mobileSubMenuOpen: false }" class="relative">
-                <button @click="mobileSubMenuOpen = !mobileSubMenuOpen" class="w-full text-left text-white hover:text-gray-200 hover:bg-[#909090] block px-3 py-2 rounded-md text-base font-medium flex justify-between items-center">
+                <button @click="mobileSubMenuOpen = !mobileSubMenuOpen" class="w-full text-left text-white hover:text-gray-200 hover:bg-[#909090] px-3 py-2 rounded-md text-base font-medium flex justify-between items-center">
                     <span>Jasa</span>
                     <svg :class="{'transform rotate-180': mobileSubMenuOpen}" class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
