@@ -23,12 +23,18 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'customer_name' => 'required|string|max:255',
-            'customer_origin' => 'required|string|max:255',
-            'service_used' => 'required|string|max:255',
-            'content' => 'required|string',
-            'image_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        'customer_name' => 'required|string|max:255',
+        'customer_origin' => 'required|string|max:255',
+        'service_used' => 'required|string|max:255',
+        'custom_service' => 'nullable|string|max:255|required_if:service_used,custom',
+        // 'content' => 'required|string', // <-- HAPUS BARIS INI
+        'image_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+        // Logika untuk menangani "Isi Sendiri"
+        if ($validated['service_used'] === 'custom') {
+            $validated['service_used'] = $validated['custom_service'];
+        }
 
         if ($request->hasFile('image_proof')) {
             $path = $request->file('image_proof')->store('testimonials', 'public');
@@ -48,15 +54,20 @@ class TestimonialController extends Controller
     public function update(Request $request, Testimonial $testimonial)
     {
         $validated = $request->validate([
-            'customer_name' => 'required|string|max:255',
-            'customer_origin' => 'required|string|max:255',
-            'service_used' => 'required|string|max:255',
-            'content' => 'required|string',
-            'image_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        'customer_name' => 'required|string|max:255',
+        'customer_origin' => 'required|string|max:255',
+        'service_used' => 'required|string|max:255',
+        'custom_service' => 'nullable|string|max:255|required_if:service_used,custom',
+        // 'content' => 'required|string', // <-- HAPUS BARIS INI
+        'image_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+        // Logika untuk menangani "Isi Sendiri"
+        if ($validated['service_used'] === 'custom') {
+            $validated['service_used'] = $validated['custom_service'];
+        }
 
         if ($request->hasFile('image_proof')) {
-            // Hapus gambar lama jika ada
             if ($testimonial->image_proof) {
                 Storage::disk('public')->delete($testimonial->image_proof);
             }
