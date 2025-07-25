@@ -17,7 +17,9 @@ class TestimonialController extends Controller
 
     public function create()
     {
-        return view('admin.testimonials.create');
+        // Kita kirim variabel testimonial kosong agar form tidak error
+        $testimonial = new Testimonial();
+        return view('admin.testimonials.create', compact('testimonial'));
     }
 
     public function store(Request $request)
@@ -48,6 +50,7 @@ class TestimonialController extends Controller
 
     public function edit(Testimonial $testimonial)
     {
+        // Method ini sudah benar, hanya memastikan saja
         return view('admin.testimonials.edit', compact('testimonial'));
     }
 

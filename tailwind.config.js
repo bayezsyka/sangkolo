@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import aspectRatio from '@tailwindcss/aspect-ratio'; // <-- 1. Tambahkan import ini
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -14,7 +15,6 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
-            // PALET WARNA MONOKROM BARU
             colors: {
                 'sangkolo-light': '#aeaeae',
                 'sangkolo-mid': '#909090',
@@ -24,5 +24,8 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        forms,
+        aspectRatio, // <-- 2. Tambahkan plugin di sini
+    ],
 };
