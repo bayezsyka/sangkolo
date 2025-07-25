@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sangkolo Agensi Jasa</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('build/assets/app-BQJjDyVl.css') }}">
+    <script type="module" src="{{ asset('build/assets/app-DtCVKgHt.js') }}"></script>
 </head>
 <body class="font-sans antialiased bg-gray-100 text-sangkolo-dark">
     
