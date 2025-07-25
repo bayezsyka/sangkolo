@@ -27,6 +27,7 @@ class User extends Authenticatable
     'major',
     'skills',
     'is_approved',
+    'is_busy',
     ];
 
     /**

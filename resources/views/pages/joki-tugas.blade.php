@@ -30,18 +30,22 @@
                             {{-- == TOMBOL KONSULTASI PER JOKER DIKEMBALIKAN KE SINI == --}}
                             {{-- ====================================================== --}}
                             <div class="relative mt-8 w-full">
-                                @php
-                                    // GANTI NOMOR INI dengan nomor WhatsApp admin/bisnis Anda
-                                    $whatsappNumber = '6285161603362';
-                                    
-                                    // Pesan WhatsApp dibuat dinamis sesuai NICKNAME JOKER
-                                    $message = "Halo kak " . $joker->nickname . ", saya mau konsultasi tugas...";
-                                    
-                                    $whatsappLink = "https://wa.me/{$whatsappNumber}?text=" . urlencode($message);
-                                @endphp
-                                <a href="{{ $whatsappLink }}" target="_blank" class="w-full block text-center bg-sangkolo-black text-white font-bold py-3 px-8 rounded-lg text-sm hover:bg-sangkolo-dark transition shadow-lg">
-                                    Konsultasi dengan {{ $joker->nickname }}
-                                </a>
+                                @if ($joker->is_busy)
+                                    {{-- Tombol saat joker sibuk --}}
+                                    <button disabled class="w-full block text-center bg-gray-400 text-white font-bold py-3 px-8 rounded-lg text-sm cursor-not-allowed">
+                                        Sedang Sibuk
+                                    </button>
+                                @else
+                                    {{-- Tombol normal saat joker tersedia --}}
+                                    @php
+                                        $whatsappNumber = '6281234567890';
+                                        $message = "Halo kak " . $joker->nickname . ", saya mau konsultasi tugas...";
+                                        $whatsappLink = "https://wa.me/{$whatsappNumber}?text=" . urlencode($message);
+                                    @endphp
+                                    <a href="{{ $whatsappLink }}" target="_blank" class="w-full block text-center bg-sangkolo-black text-white font-bold py-3 px-8 rounded-lg text-sm hover:bg-sangkolo-dark transition shadow-lg">
+                                        Konsultasi dengan {{ $joker->nickname }}
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </article>
