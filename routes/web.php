@@ -50,7 +50,10 @@ Route::middleware('auth')->group(function () {
     });
 
 });
-
+Route::middleware(['auth', 'role:joker'])->prefix('joker')->name('joker.')->group(function () {
+    Route::get('profile/edit', [\App\Http\Controllers\Joker\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('profile', [\App\Http\Controllers\Joker\ProfileController::class, 'update'])->name('profile.update');
+});
 
 // Route Otentikasi dari Breeze
 require __DIR__.'/auth.php';
