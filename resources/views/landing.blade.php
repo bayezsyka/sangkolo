@@ -17,6 +17,7 @@
         Melayani apa saja yang bisa kita layani. Mengerjakan apa saja yang bisa kita kerjakan.
       </p>
 
+      <!-- Two simple bright cards -->
       <div class="mt-6 grid grid-cols-2 gap-3 max-w-xs">
         <a href="#kaos-custom" class="flex flex-col items-center justify-center rounded-lg bg-orange-400 px-3 py-4 sm:px-4 sm:py-5 text-center text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300">
           <span class="text-sm sm:text-base font-bold mb-1">Kaos Custom</span>
@@ -29,13 +30,14 @@
       </div>
     </div>
 
-    <!-- Visual tanpa border (keeps layout slim) -->
+    <!-- Visual carousel: auto 2.5s, pause on touch-hold, click to advance -->
     <div class="relative mx-auto w-full max-w-md md:max-w-none">
-      <div class="relative aspect-[4/3] w-full bg-transparent">
+      <div id="heroCarousel" class="relative aspect-[4/3] w-full bg-transparent overflow-hidden rounded-lg cursor-pointer select-none" tabindex="0" aria-label="Carousel produk" role="region">
         <img
+          id="heroImage"
           src="{{ asset('image/kaosalanwar.png') }}"
           alt="Produk Kami"
-          class="absolute inset-0 h-full w-full object-contain p-3 sm:p-4 md:p-6"
+          class="absolute inset-0 h-full w-full object-contain p-3 sm:p-4 md:p-6 transition-opacity duration-700 ease-in-out"
           loading="eager"
         />
       </div>
@@ -96,5 +98,80 @@
     .animate-fade-in, .animate-slide-up { animation: none !important; }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = [
+      '{{ asset('image/kaosalanwar.png') }}',
+      '{{ asset('image/kaosbidah.png') }}',
+      '{{ asset('image/kubahkaos.png') }}'
+    ];
+    const DURATION = 1700; // 2.5s per slide
+    const FADE = 700; // must match CSS transition duration
+
+    let index = 0;
+    let timer = null;
+    let paused = false;
+    let pointerDown = false;
+
+    const heroImage = document.getElementById('heroImage');
+    const heroCarousel = document.getElementById('heroCarousel');
+
+    function showNext() {
+      index = (index + 1) % images.length;
+      heroImage.classList.add('opacity-0');
+      setTimeout(() => {
+        heroImage.src = images[index];
+        heroImage.classList.remove('opacity-0');
+      }, FADE);
+    }
+
+    function start() {
+      if (timer) return;
+      timer = setInterval(() => {
+        if (!paused) showNext();
+      }, DURATION);
+    }
+
+    function stop() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    // Auto start
+    start();
+
+    // Click to advance one slide
+    heroCarousel.addEventListener('click', () => {
+      showNext();
+    });
+
+    // Pause on touch-hold (pointerdown) and resume on release/cancel/leave
+    heroCarousel.addEventListener('pointerdown', () => {
+      paused = true;
+      pointerDown = true;
+    });
+
+    function resumeIfHeld() {
+      if (pointerDown) {
+        paused = false;
+        pointerDown = false;
+      }
+    }
+
+    heroCarousel.addEventListener('pointerup', resumeIfHeld);
+    heroCarousel.addEventListener('pointercancel', resumeIfHeld);
+    heroCarousel.addEventListener('pointerleave', resumeIfHeld);
+
+    // Optional: stop timer when page hidden, resume when visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stop();
+      } else {
+        start();
+      }
+    });
+  });
+</script>
 
 @endsection
