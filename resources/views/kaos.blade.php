@@ -18,272 +18,161 @@
         </p>
       </div>
 
-      <!-- Kanan: Dynamic Rotating Mockups -->
-      <div class="relative mx-auto w-full max-w-lg" data-rotator>
+      <!-- Kanan: Rotator Mockups (simple auto-fade) -->
+      <div
+        class="relative mx-auto w-full max-w-lg"
+        data-rotator
+        role="region"
+        aria-label="Rotator mockup kaos"
+        data-interval="2000"
+      >
         <div class="relative aspect-[4/3] w-full overflow-visible">
           <!-- Img 1 -->
-          <img src="{{ asset('image/kaosalanwar.png') }}" alt="Contoh desain kaos 1"
-            class="absolute inset-0 m-auto h-full w-full object-contain transition-all duration-1000 ease-out opacity-100 scale-100 rotate-0 blur-0"
+          <img
+            src="{{ asset('image/kaosalanwar.png') }}"
+            alt="Contoh desain kaos 1"
+            class="rotator-img absolute inset-0 m-auto h-full w-full object-contain"
             data-rotator-item
+            draggable="false"
+            fetchpriority="high"
+            decoding="async"
+            loading="eager"
           />
           <!-- Img 2 -->
-          <img src="{{ asset('image/kaosbidah.png') }}" alt="Contoh desain kaos 2"
-            class="absolute inset-0 m-auto h-full w-full object-contain transition-all duration-1000 ease-out opacity-0 scale-95 rotate-3 blur-sm"
+          <img
+            src="{{ asset('image/kaosbidah.png') }}"
+            alt="Contoh desain kaos 2"
+            class="rotator-img absolute inset-0 m-auto h-full w-full object-contain"
             data-rotator-item
+            draggable="false"
+            decoding="async"
+            loading="lazy"
           />
           <!-- Img 3 -->
-          <img src="{{ asset('image/kubahkaos.png') }}" alt="Contoh desain kaos 3"
-            class="absolute inset-0 m-auto h-full w-full object-contain transition-all duration-1000 ease-out opacity-0 scale-110 -rotate-2 blur-sm"
+          <img
+            src="{{ asset('image/kubahkaos.png') }}"
+            alt="Contoh desain kaos 3"
+            class="rotator-img absolute inset-0 m-auto h-full w-full object-contain"
             data-rotator-item
+            draggable="false"
+            decoding="async"
+            loading="lazy"
           />
 
-          <!-- Floating Animation Elements -->
-          <div class="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-20 animate-float-slow" data-float-1></div>
-          <div class="absolute -bottom-6 -right-6 w-12 h-12 bg-gradient-to-br from-pink-400 to-red-500 rounded-full opacity-15 animate-float-medium" data-float-2></div>
-          <div class="absolute top-1/2 -left-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-25 animate-float-fast" data-float-3></div>
+          <!-- Floating dekor (disimpan tapi dimatikan) -->
+          <div class="floating absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-20 animate-float-slow" data-float-1></div>
+          <div class="floating absolute -bottom-6 -right-6 w-12 h-12 bg-gradient-to-br from-pink-400 to-red-500 rounded-full opacity-15 animate-float-medium" data-float-2></div>
+          <div class="floating absolute top-1/2 -left-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-25 animate-float-fast" data-float-3></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+@endsection
 
 @push('styles')
 <style>
-  @keyframes float-slow {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(180deg); }
-  }
-  
-  @keyframes float-medium {
-    0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
-    33% { transform: translateY(-15px) rotate(120deg) scale(1.1); }
-    66% { transform: translateY(-25px) rotate(240deg) scale(0.9); }
-  }
-  
-  @keyframes float-fast {
-    0%, 100% { transform: translateX(0px) translateY(0px); }
-    25% { transform: translateX(10px) translateY(-10px); }
-    50% { transform: translateX(-5px) translateY(-20px); }
-    75% { transform: translateX(15px) translateY(-5px); }
-  }
-  
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+  :root{
+    /* kontrol halus */
+    --rotator-duration: 600ms;
+    --rotator-ease: cubic-bezier(0.16,1,0.3,1);
   }
 
-  .animate-float-slow {
-    animation: float-slow 6s ease-in-out infinite;
+  .rotator-img{
+    opacity:0;
+    will-change:opacity,transform;
+    backface-visibility:hidden;
+    transform:translateZ(0) scale(1);
+    pointer-events:none;
+    contain:paint;
+    transition:none; /* hindari konflik dengan WAAPI */
   }
-  
-  .animate-float-medium {
-    animation: float-medium 4s ease-in-out infinite;
-  }
-  
-  .animate-float-fast {
-    animation: float-fast 3s ease-in-out infinite;
-  }
-  
-  .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
+  .rotator-img.is-active{ opacity:1; }
 
-  /* Efek untuk gambar aktif */
-  .image-glow {
-    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
-  }
+  /* Simpan dekor tapi mati agar “fitur” tidak hilang */
+  .floating{ display:none !important; }
 
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
+  /* Tetap ada keyframes kalau nanti mau hidupkan lagi */
+  @keyframes float-slow{ 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-18px) rotate(160deg)} }
+  @keyframes float-medium{ 0%,100%{transform:translateY(0) rotate(0) scale(1)} 33%{transform:translateY(-14px) rotate(110deg) scale(1.06)} 66%{transform:translateY(-22px) rotate(220deg) scale(0.94)} }
+  @keyframes float-fast{ 0%,100%{transform:translate(0,0)} 25%{transform:translate(10px,-10px)} 50%{transform:translate(-5px,-18px)} 75%{transform:translate(14px,-6px)} }
+
+  .animate-float-slow{ animation:float-slow 6s ease-in-out infinite }
+  .animate-float-medium{ animation:float-medium 4s ease-in-out infinite }
+  .animate-float-fast{ animation:float-fast 3s ease-in-out infinite }
+
+  @media (prefers-reduced-motion: reduce){
     .animate-float-slow,
     .animate-float-medium,
-    .animate-float-fast,
-    .animate-pulse-glow {
-      animation: none;
-    }
+    .animate-float-fast{ animation:none !important }
   }
 </style>
 @endpush
 
 @push('scripts')
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', () => {
     const rotator = document.querySelector('[data-rotator]');
     if (!rotator) return;
 
     const items = Array.from(rotator.querySelectorAll('[data-rotator-item]'));
-    const floatingElements = Array.from(rotator.querySelectorAll('[data-float-1], [data-float-2], [data-float-3]'));
-    
-    if (items.length <= 1) return;
-
-    let currentIndex = 0;
-    const intervalTime = 4000; // Lebih lambat untuk efek yang lebih smooth
-    let intervalId = null;
-
-    // Array efek transisi yang berbeda-beda
-    const transitions = [
-      // Efek zoom + fade
-      {
-        out: (item) => {
-          item.classList.add('opacity-0', 'scale-125', 'blur-md');
-          item.classList.remove('opacity-100', 'scale-100', 'blur-0');
-        },
-        in: (item) => {
-          item.classList.remove('opacity-0', 'scale-95', 'blur-sm');
-          item.classList.add('opacity-100', 'scale-100', 'blur-0');
-        }
-      },
-      // Efek rotate + slide
-      {
-        out: (item) => {
-          item.classList.add('opacity-0', 'rotate-12', 'translate-x-8');
-          item.classList.remove('opacity-100', 'rotate-0');
-        },
-        in: (item) => {
-          item.classList.remove('opacity-0', 'rotate-3', 'blur-sm');
-          item.classList.add('opacity-100', 'rotate-0', 'blur-0');
-        }
-      },
-      // Efek flip + scale
-      {
-        out: (item) => {
-          item.classList.add('opacity-0', 'scale-75', '-rotate-6', 'blur-lg');
-          item.classList.remove('opacity-100', 'scale-100', 'rotate-0', 'blur-0');
-        },
-        in: (item) => {
-          item.classList.remove('opacity-0', 'scale-110', '-rotate-2', 'blur-sm');
-          item.classList.add('opacity-100', 'scale-100', 'rotate-0', 'blur-0');
-        }
-      }
-    ];
-
-    function setActive(nextIndex) {
-      const currentItem = items[currentIndex];
-      const nextItem = items[nextIndex];
-      
-      // Pilih efek transisi secara acak
-      const transition = transitions[Math.floor(Math.random() * transitions.length)];
-      
-      // Hapus efek glow dari item saat ini
-      currentItem.classList.remove('image-glow');
-      
-      // Terapkan efek keluar
-      transition.out(currentItem);
-      
-      // Setelah delay singkat, terapkan efek masuk
-      setTimeout(() => {
-        transition.in(nextItem);
-        // Tambahkan efek glow ke item baru
-        nextItem.classList.add('image-glow');
-        
-        // Animasi floating elements
-        animateFloatingElements();
-      }, 200);
-
-      currentIndex = nextIndex;
+    if (items.length <= 1) {
+      // tampilkan satu-satunya gambar
+      if (items[0]) items[0].style.opacity = '1';
+      return;
     }
 
-    function animateFloatingElements() {
-      // Random animasi untuk floating elements
-      floatingElements.forEach((element, index) => {
-        const randomDelay = Math.random() * 1000;
-        const randomDuration = 2000 + (Math.random() * 2000);
-        
-        setTimeout(() => {
-          element.style.transition = `transform ${randomDuration}ms ease-in-out`;
-          const randomX = (Math.random() - 0.5) * 40;
-          const randomY = (Math.random() - 0.5) * 40;
-          const randomRotate = Math.random() * 360;
-          const randomScale = 0.8 + (Math.random() * 0.4);
-          
-          element.style.transform = `translateX(${randomX}px) translateY(${randomY}px) rotate(${randomRotate}deg) scale(${randomScale})`;
-          
-          // Reset setelah animasi selesai
-          setTimeout(() => {
-            element.style.transform = '';
-          }, randomDuration);
-        }, randomDelay);
+    // Reduced motion: tampilkan gambar pertama saja
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      items.forEach((img, i) => {
+        img.style.opacity = i === 0 ? '1' : '0';
+        img.classList.toggle('is-active', i === 0);
       });
+      return;
     }
 
-    function rotate() {
-      const nextIndex = (currentIndex + 1) % items.length;
-      setActive(nextIndex);
-    }
+    const intervalTime = Number(rotator.getAttribute('data-interval')) || 2000;
+    const durationMs = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--rotator-duration')) || 600;
+    const easing = getComputedStyle(document.documentElement).getPropertyValue('--rotator-ease').trim() || 'cubic-bezier(0.16,1,0.3,1)';
 
-    function play() {
-      if (intervalId) return;
-      intervalId = setInterval(rotate, intervalTime);
-    }
-
-    function stop() {
-      if (!intervalId) return;
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-
-    // Inisialisasi
-    setActive(0);
-    items[0].classList.add('image-glow');
-    play();
-
-    // Pause saat hover dengan efek visual
-    rotator.addEventListener('mouseenter', () => {
-      stop();
-      rotator.style.transform = 'scale(1.02)';
-      rotator.style.transition = 'transform 0.3s ease';
-    });
-    
-    rotator.addEventListener('mouseleave', () => {
-      play();
-      rotator.style.transform = 'scale(1)';
+    // State awal + preload ringan
+    items.forEach((img, i) => {
+      img.style.opacity = i === 0 ? '1' : '0';
+      img.classList.toggle('is-active', i === 0);
+      const pre = new Image();
+      pre.src = img.currentSrc || img.src;
     });
 
-    // Respect prefers-reduced-motion
-    try {
-      const prm = window.matchMedia('(prefers-reduced-motion: reduce)');
-      if (prm.matches) {
-        stop();
-        // Matikan floating animations
-        floatingElements.forEach(el => {
-          el.style.animation = 'none';
-        });
-      }
-      
-      const handleChange = (e) => {
-        if (e.matches) {
-          stop();
-          floatingElements.forEach(el => {
-            el.style.animation = 'none';
-          });
-        } else {
-          play();
-          floatingElements.forEach((el, index) => {
-            const animations = ['animate-float-slow', 'animate-float-medium', 'animate-float-fast'];
-            el.className = el.className.replace(/animate-float-\w+/, animations[index]);
-          });
-        }
-      };
+    let index = 0;
+    let ticking = false; // guard agar animasi tidak bertumpuk (walau tanpa interaksi)
 
-      if (prm.addEventListener) {
-        prm.addEventListener('change', handleChange);
-      } else if (prm.addListener) {
-        prm.addListener(handleChange);
-      }
-    } catch (_) {}
+    setInterval(() => {
+      if (ticking) return; // jaga-jaga
+      ticking = true;
 
-    // Tambahkan interaksi click untuk manual navigation
-    items.forEach((item, index) => {
-      item.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (index !== currentIndex) {
-          stop();
-          setActive(index);
-          setTimeout(play, 1000); // Resume setelah 1 detik
-        }
-      });
-    });
+      const current = items[index];
+      const next = items[(index + 1) % items.length];
+
+      // Fade out/in serentak
+      const outAnim = current.animate(
+        [{ opacity: 1 }, { opacity: 0 }],
+        { duration: durationMs, easing, fill: 'forwards' }
+      );
+      const inAnim = next.animate(
+        [{ opacity: 0 }, { opacity: 1 }],
+        { duration: durationMs, easing, fill: 'forwards' }
+      );
+
+      Promise.allSettled([outAnim.finished, inAnim.finished]).then(() => {
+        current.style.opacity = '0';
+        current.classList.remove('is-active');
+        next.style.opacity = '1';
+        next.classList.add('is-active');
+        index = (index + 1) % items.length;
+        ticking = false;
+      }).catch(() => { ticking = false; });
+    }, intervalTime);
   });
 </script>
 @endpush
-@endsection
