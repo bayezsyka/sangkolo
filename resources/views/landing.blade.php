@@ -7,39 +7,28 @@
   <div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 md:grid-cols-2">
     <!-- Copy -->
     <div class="relative z-10">
-      <h1 class="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight">
-        SANGKOLO
-      </h1>
-      <h2 class="mt-2 text-lg sm:text-xl font-semibold text-gray-800">
-        Agensi Jasa Serabutan
-      </h2>
-      <p class="mt-4 max-w-md text-sm sm:text-base text-gray-600">
-        Melayani apa saja yang bisa kita layani. Mengerjakan apa saja yang bisa kita kerjakan.
-      </p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight">SANGKOLO</h1>
+      <h2 class="mt-2 text-lg sm:text-xl font-semibold text-gray-800">Agensi Jasa Serabutan</h2>
+      <p class="mt-4 max-w-md text-sm sm:text-base text-gray-600">Melayani apa saja yang bisa kita layani. Mengerjakan apa saja yang bisa kita kerjakan.</p>
 
-      <!-- Two simple bright cards -->
+      <!-- Two simple white cards -->
       <div class="mt-6 grid grid-cols-2 gap-3 max-w-xs">
-        <a href="#kaos-custom" class="flex flex-col items-center justify-center rounded-lg bg-orange-400 px-3 py-4 sm:px-4 sm:py-5 text-center text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300">
-          <span class="text-sm sm:text-base font-bold mb-1">Kaos Custom</span>
-          <span class="text-[10px] sm:text-xs opacity-90">Pesan kaos sesuai desainmu</span>
+        <a class="flex flex-col items-center justify-center rounded-lg bg-white px-3 py-4 sm:px-4 sm:py-5 text-center shadow hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-orange-300">
+          <span class="text-sm sm:text-base font-bold text-black mb-1">Kaos Custom</span>
+          <span class="text-[10px] sm:text-xs text-gray-700">Pesan kaos sesuai desainmu</span>
         </a>
-        <a href="#joki-tugas" class="flex flex-col items-center justify-center rounded-lg bg-orange-400 px-3 py-4 sm:px-4 sm:py-5 text-center text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300">
-          <span class="text-sm sm:text-base font-bold mb-1">Joki Tugas</span>
-          <span class="text-[10px] sm:text-xs opacity-90">Bantu selesaikan pekerjaanmu</span>
+        <a class="flex flex-col items-center justify-center rounded-lg bg-white px-3 py-4 sm:px-4 sm:py-5 text-center shadow hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-orange-300">
+          <span class="text-sm sm:text-base font-bold text-black mb-1">Joki Tugas</span>
+          <span class="text-[10px] sm:text-xs text-gray-700">Bantu selesaikan pekerjaanmu</span>
         </a>
       </div>
     </div>
 
-    <!-- Visual carousel: auto 2.5s, pause on touch-hold, click to advance -->
+    <!-- Visual carousel: unified timer to avoid overlap; pause on hold; click to next; menus disabled -->
     <div class="relative mx-auto w-full max-w-md md:max-w-none">
-      <div id="heroCarousel" class="relative aspect-[4/3] w-full bg-transparent overflow-hidden rounded-lg cursor-pointer select-none" tabindex="0" aria-label="Carousel produk" role="region">
-        <img
-          id="heroImage"
-          src="{{ asset('image/kaosalanwar.png') }}"
-          alt="Produk Kami"
-          class="absolute inset-0 h-full w-full object-contain p-3 sm:p-4 md:p-6 transition-opacity duration-700 ease-in-out"
-          loading="eager"
-        />
+      <div id="heroCarousel" class="relative aspect-[4/3] w-full bg-transparent overflow-hidden rounded-lg select-none" role="region" aria-label="Carousel produk">
+        <img id="heroImage" src="{{ asset('image/kaosalanwar.png') }}" alt="Produk Kami" class="absolute inset-0 h-full w-full object-contain p-3 sm:p-4 md:p-6 transition-opacity duration-700 ease-in-out pointer-events-none" loading="eager" draggable="false" />
+        <div id="heroOverlay" class="absolute inset-0" tabindex="0" style="touch-action: manipulation; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none;"></div>
       </div>
     </div>
   </div>
@@ -56,26 +45,16 @@
     <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       @forelse ($testimonials as $testimonial)
         <article class="bg-white rounded-lg border border-neutral-200/60 overflow-hidden shadow-sm transition-shadow duration-300 flex flex-col h-full">
-          <!-- Gambar -->
           <div class="bg-gray-50 flex items-center justify-center p-2">
             <div class="w-full max-w-full aspect-[4/3] sm:aspect-[3/2] overflow-hidden">
-              <img
-                class="h-full w-full object-contain"
-                src="{{ asset('storage/' . $testimonial->image_proof) }}"
-                alt="Testimoni dari {{ $testimonial->customer_name }}"
-                loading="lazy"
-              >
+              <img class="h-full w-full object-contain" src="{{ asset('storage/' . $testimonial->image_proof) }}" alt="Testimoni dari {{ $testimonial->customer_name }}" loading="lazy">
             </div>
           </div>
-
-          <!-- Konten teks -->
           <div class="p-4 sm:p-5 flex-grow flex flex-col">
-            <h3 class="font-bold text-sangkolo-black text-base sm:text-base">{{ $testimonial->customer_name }}</h3>
+            <h3 class="font-bold text-sangkolo-black text-base">{{ $testimonial->customer_name }}</h3>
             <p class="text-xs sm:text-sm text-gray-600">{{ $testimonial->customer_origin }}</p>
             <div class="mt-auto pt-2">
-              <span class="text-xs font-medium text-white bg-sangkolo-mid inline-block px-2.5 py-1 rounded-lg">
-                {{ $testimonial->service_used }}
-              </span>
+              <span class="text-xs font-medium text-white bg-sangkolo-mid inline-block px-2.5 py-1 rounded-lg">{{ $testimonial->service_used }}</span>
             </div>
           </div>
         </article>
@@ -88,15 +67,12 @@
   </div>
 </section>
 
-<!-- Motion safety for custom animations -->
 <style>
   @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
   @keyframes slide-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .animate-fade-in { animation: fade-in 1s ease-out both; }
   .animate-slide-up { animation: slide-up 1s ease-out both; }
-  @media (prefers-reduced-motion: reduce) {
-    .animate-fade-in, .animate-slide-up { animation: none !important; }
-  }
+  @media (prefers-reduced-motion: reduce) { .animate-fade-in, .animate-slide-up { animation: none !important; } }
 </style>
 
 <script>
@@ -106,71 +82,69 @@
       '{{ asset('image/kaosbidah.png') }}',
       '{{ asset('image/kubahkaos.png') }}'
     ];
-    const DURATION = 1700; // 2.5s per slide
-    const FADE = 700; // must match CSS transition duration
+    const DURATION = 2500;
+    const FADE = 700;
 
     let index = 0;
-    let timer = null;
+    let timeoutId = null;
     let paused = false;
-    let pointerDown = false;
+    let busy = false;
+    let held = false;
 
     const heroImage = document.getElementById('heroImage');
+    const heroOverlay = document.getElementById('heroOverlay');
     const heroCarousel = document.getElementById('heroCarousel');
 
-    function showNext() {
+    function scheduleNext() {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => { if (!paused) advance(); }, DURATION);
+    }
+
+    function advance() {
+      if (busy) return;
+      busy = true;
       index = (index + 1) % images.length;
       heroImage.classList.add('opacity-0');
       setTimeout(() => {
         heroImage.src = images[index];
         heroImage.classList.remove('opacity-0');
+        busy = false;
+        scheduleNext();
       }, FADE);
     }
 
-    function start() {
-      if (timer) return;
-      timer = setInterval(() => {
-        if (!paused) showNext();
-      }, DURATION);
-    }
-
-    function stop() {
-      clearInterval(timer);
-      timer = null;
-    }
-
-    // Auto start
-    start();
-
-    // Click to advance one slide
-    heroCarousel.addEventListener('click', () => {
-      showNext();
+    heroOverlay.addEventListener('click', (e) => {
+      e.preventDefault();
+      paused = false;
+      clearTimeout(timeoutId);
+      advance();
     });
 
-    // Pause on touch-hold (pointerdown) and resume on release/cancel/leave
-    heroCarousel.addEventListener('pointerdown', () => {
+    heroOverlay.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      held = true;
       paused = true;
-      pointerDown = true;
+      clearTimeout(timeoutId);
     });
-
-    function resumeIfHeld() {
-      if (pointerDown) {
-        paused = false;
-        pointerDown = false;
-      }
+    function resumeFromHold() {
+      if (!held) return;
+      held = false;
+      paused = false;
+      scheduleNext();
     }
+    heroOverlay.addEventListener('pointerup', resumeFromHold);
+    heroOverlay.addEventListener('pointercancel', resumeFromHold);
+    heroOverlay.addEventListener('pointerleave', resumeFromHold);
 
-    heroCarousel.addEventListener('pointerup', resumeIfHeld);
-    heroCarousel.addEventListener('pointercancel', resumeIfHeld);
-    heroCarousel.addEventListener('pointerleave', resumeIfHeld);
-
-    // Optional: stop timer when page hidden, resume when visible
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        stop();
-      } else {
-        start();
-      }
+    const suppress = (ev) => { ev.preventDefault(); ev.stopPropagation(); return false; };
+    ['contextmenu','dragstart'].forEach(type => {
+      heroCarousel.addEventListener(type, suppress);
+      heroOverlay.addEventListener(type, suppress);
+      heroImage.addEventListener(type, suppress);
     });
+    heroImage.setAttribute('oncontextmenu', 'return false');
+
+    scheduleNext();
   });
 </script>
 
