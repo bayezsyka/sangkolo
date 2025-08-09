@@ -21,7 +21,12 @@ use App\Http\Controllers\Admin\TestimonialController;
 Route::get('/', [LandingPageController::class, 'index'])->name('landing');
 Route::get('/joki-tugas', [JokiTugasController::class, 'index'])->name('joki-tugas.index');
 
-
+Route::get('/kaoscustom', function () {
+    return view('kaos');
+});
+Route::get('/page', function () {
+    return view('page');
+});
 // == RUTE YANG MEMERLUKAN LOGIN ==
 Route::middleware('auth')->group(function () {
     
