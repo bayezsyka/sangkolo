@@ -1,292 +1,289 @@
 @extends('layouts.main')
 
 @section('content')
-<section class="min-h-screen bg-sangkolo-dark text-white p-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">KUSTOM KAOS SATUAN & GROSIR</h1>
-        <p class="text-xl text-sangkolo-light max-w-3xl mx-auto">Desain kaos sesuai keinginan Anda, mulai dari 1 potong sampai ribuan, dengan kualitas premium dan harga terjangkau</p>
+<!-- Hero Section: Custom T-Shirt -->
+<section id="hero-custom-tees" class="bg-[#FAF9F6]">
+  <div class="mx-auto max-w-7xl px-6 py-16 md:py-24">
+    <div class="grid items-center gap-10 md:grid-cols-2">
+      <!-- Kiri: Teks -->
+      <div class="space-y-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
+          pesan kaos dengan design suka-suka hanya 80ribu
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-700">
+          bisa satuan sampai lusinan
+        </p>
+        <p class="text-sm md:text-base text-slate-500">
+          harga menyesuaikan jumlah, bisa lebih murah
+        </p>
       </div>
-  
-      <!-- Keunggulan -->
-      <div class="grid md:grid-cols-3 gap-8 mb-16">
-        <div class="bg-sangkolo-black p-6 rounded-xl shadow-lg">
-          <div class="text-4xl mb-4">🖌️</div>
-          <h3 class="text-xl font-bold mb-2">Desain Bebas</h3>
-          <p class="text-sangkolo-light">Tentukan sendiri desain kaos Anda, dari teks sederhana sampai grafis kompleks</p>
+
+      <!-- Kanan: Dynamic Rotating Mockups -->
+      <div class="relative mx-auto w-full max-w-lg" data-rotator>
+        <div class="relative aspect-[4/3] w-full overflow-visible">
+          <!-- Img 1 -->
+          <img src="{{ asset('image/kaosalanwar.png') }}" alt="Contoh desain kaos 1"
+            class="absolute inset-0 m-auto h-full w-full object-contain transition-all duration-1000 ease-out opacity-100 scale-100 rotate-0 blur-0"
+            data-rotator-item
+          />
+          <!-- Img 2 -->
+          <img src="{{ asset('image/kaosbidah.png') }}" alt="Contoh desain kaos 2"
+            class="absolute inset-0 m-auto h-full w-full object-contain transition-all duration-1000 ease-out opacity-0 scale-95 rotate-3 blur-sm"
+            data-rotator-item
+          />
+          <!-- Img 3 -->
+          <img src="{{ asset('image/kubahkaos.png') }}" alt="Contoh desain kaos 3"
+            class="absolute inset-0 m-auto h-full w-full object-contain transition-all duration-1000 ease-out opacity-0 scale-110 -rotate-2 blur-sm"
+            data-rotator-item
+          />
+
+          <!-- Floating Animation Elements -->
+          <div class="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full opacity-20 animate-float-slow" data-float-1></div>
+          <div class="absolute -bottom-6 -right-6 w-12 h-12 bg-gradient-to-br from-pink-400 to-red-500 rounded-full opacity-15 animate-float-medium" data-float-2></div>
+          <div class="absolute top-1/2 -left-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-25 animate-float-fast" data-float-3></div>
         </div>
-        <div class="bg-sangkolo-black p-6 rounded-xl shadow-lg">
-          <div class="text-4xl mb-4">👕</div>
-          <h3 class="text-xl font-bold mb-2">Bahan Premium</h3>
-          <p class="text-sangkolo-light">Kaos dari bahan katun combed 30s yang nyaman, adem, dan tahan lama</p>
-        </div>
-        <div class="bg-sangkolo-black p-6 rounded-xl shadow-lg">
-          <div class="text-4xl mb-4">🚚</div>
-          <h3 class="text-xl font-bold mb-2">Kirim Ke Mana Saja</h3>
-          <p class="text-sangkolo-light">Pengiriman ke seluruh Indonesia dengan berbagai pilihan ekspedisi</p>
-        </div>
-      </div>
-  
-      <!-- Proses Pembuatan -->
-      <div class="mb-16">
-        <h2 class="text-3xl font-bold mb-8 text-center">PROSES PEMBUATAN</h2>
-        <div class="relative">
-          <!-- Timeline -->
-          <div class="hidden md:block absolute left-1/2 h-full w-1 bg-sangkolo-light transform -translate-x-1/2"></div>
-          
-          <!-- Step 1 -->
-          <div class="relative mb-12 md:flex items-center">
-            <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right">
-              <h3 class="text-2xl font-bold mb-2">1. Desain Kaos</h3>
-              <p class="text-sangkolo-light">Kirim desain Anda atau konsultasikan dengan tim desainer kami</p>
-            </div>
-            <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-sangkolo-mid mx-auto text-2xl font-bold z-10">1</div>
-            <div class="md:w-1/2 md:pl-12">
-              <div class="bg-sangkolo-black p-6 rounded-xl h-full">
-                <img src="https://via.placeholder.com/400x200/5c5c5c/ffffff?text=Upload+Design" alt="Desain Kaos" class="w-full rounded-lg mb-4">
-              </div>
-            </div>
-          </div>
-  
-          <!-- Step 2 -->
-          <div class="relative mb-12 md:flex items-center">
-            <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 order-2">
-              <h3 class="text-2xl font-bold mb-2">2. Konfirmasi & Pembayaran</h3>
-              <p class="text-sangkolo-light">Setelah desain disetujui, lakukan pembayaran untuk memulai produksi</p>
-            </div>
-            <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-sangkolo-mid mx-auto text-2xl font-bold z-10 order-1">2</div>
-            <div class="md:w-1/2 md:pl-12 order-0">
-              <div class="bg-sangkolo-black p-6 rounded-xl h-full">
-                <img src="https://via.placeholder.com/400x200/5c5c5c/ffffff?text=Konfirmasi+Pembayaran" alt="Konfirmasi Pembayaran" class="w-full rounded-lg mb-4">
-              </div>
-            </div>
-          </div>
-  
-          <!-- Step 3 -->
-          <div class="relative mb-12 md:flex items-center">
-            <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 md:text-right">
-              <h3 class="text-2xl font-bold mb-2">3. Produksi Kaos</h3>
-              <p class="text-sangkolo-light">Proses cetak dengan teknologi DTG (Direct to Garment) untuk hasil terbaik</p>
-            </div>
-            <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-sangkolo-mid mx-auto text-2xl font-bold z-10">3</div>
-            <div class="md:w-1/2 md:pl-12">
-              <div class="bg-sangkolo-black p-6 rounded-xl h-full">
-                <img src="https://via.placeholder.com/400x200/5c5c5c/ffffff?text=Proses+Produksi" alt="Proses Produksi" class="w-full rounded-lg mb-4">
-              </div>
-            </div>
-          </div>
-  
-          <!-- Step 4 -->
-          <div class="relative md:flex items-center">
-            <div class="md:w-1/2 md:pr-12 mb-6 md:mb-0 order-2">
-              <h3 class="text-2xl font-bold mb-2">4. Pengiriman</h3>
-              <p class="text-sangkolo-light">Kaos siap dikirim atau bisa diambil langsung di workshop kami</p>
-            </div>
-            <div class="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-sangkolo-mid mx-auto text-2xl font-bold z-10 order-1">4</div>
-            <div class="md:w-1/2 md:pl-12 order-0">
-              <div class="bg-sangkolo-black p-6 rounded-xl h-full">
-                <img src="https://via.placeholder.com/400x200/5c5c5c/ffffff?text=Pengiriman+Kaos" alt="Pengiriman Kaos" class="w-full rounded-lg mb-4">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Pilihan Paket -->
-      <div class="mb-16">
-        <h2 class="text-3xl font-bold mb-8 text-center">PILIHAN PAKET</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-          <!-- Paket Satuan -->
-          <div class="bg-sangkolo-black rounded-xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-300">
-            <div class="bg-sangkolo-mid p-4 text-center">
-              <h3 class="text-2xl font-bold">SATUAN</h3>
-              <p class="text-sm">Cocok untuk kebutuhan personal</p>
-            </div>
-            <div class="p-6">
-              <div class="text-4xl font-bold mb-4">Rp 99rb<span class="text-lg">/kaos</span></div>
-              <ul class="space-y-3 mb-6">
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Minimal order 1 kaos</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Bahan katun combed 30s</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Warna kaos pilihan</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Cetak 1 sisi</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-  
-          <!-- Paket Grup -->
-          <div class="bg-sangkolo-black rounded-xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-300 border-2 border-sangkolo-light">
-            <div class="bg-sangkolo-light text-sangkolo-black p-4 text-center">
-              <h3 class="text-2xl font-bold">GRUP</h3>
-              <p class="text-sm">Cocok untuk komunitas/kantor</p>
-            </div>
-            <div class="p-6">
-              <div class="text-4xl font-bold mb-4">Rp 79rb<span class="text-lg">/kaos</span></div>
-              <ul class="space-y-3 mb-6">
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Minimal order 12 kaos</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Bahan katun combed 30s</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Warna kaos pilihan</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Cetak 2 sisi gratis</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Free 1 design</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-  
-          <!-- Paket Event -->
-          <div class="bg-sangkolo-black rounded-xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-300">
-            <div class="bg-sangkolo-mid p-4 text-center">
-              <h3 class="text-2xl font-bold">EVENT</h3>
-              <p class="text-sm">Cocok untuk acara besar</p>
-            </div>
-            <div class="p-6">
-              <div class="text-4xl font-bold mb-4">Rp 59rb<span class="text-lg">/kaos</span></div>
-              <ul class="space-y-3 mb-6">
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Minimal order 50 kaos</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Bahan katun combed 30s</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Warna kaos pilihan</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Cetak 2 sisi gratis</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Free design + revisi</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-sangkolo-light mr-2">✓</span>
-                  <span>Diskon ongkir 50%</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <!-- FAQ -->
-      <div class="mb-16">
-        <h2 class="text-3xl font-bold mb-8 text-center">PERTANYAAN UMUM</h2>
-        <div class="max-w-3xl mx-auto">
-          <div class="space-y-4">
-            <!-- FAQ Item 1 -->
-            <div class="bg-sangkolo-black rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center p-4 text-left">
-                <span class="font-medium">Berapa lama proses pembuatan kaos custom?</span>
-                <span class="text-xl">+</span>
-              </button>
-              <div class="faq-content hidden px-4 pb-4 text-sangkolo-light">
-                <p>Proses produksi membutuhkan waktu 3-5 hari kerja setelah desain disetujui dan pembayaran diterima. Untuk pesanan besar (>50 kaos) membutuhkan waktu 5-7 hari kerja.</p>
-              </div>
-            </div>
-  
-            <!-- FAQ Item 2 -->
-            <div class="bg-sangkolo-black rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center p-4 text-left">
-                <span class="font-medium">Apakah bisa membuat desain sendiri?</span>
-                <span class="text-xl">+</span>
-              </button>
-              <div class="faq-content hidden px-4 pb-4 text-sangkolo-light">
-                <p>Tentu bisa! Anda dapat mengirimkan desain sendiri dalam format JPG/PNG/PDF dengan resolusi tinggi. Jika membutuhkan bantuan desain, tim kami siap membantu dengan tambahan biaya Rp 50.000/desain.</p>
-              </div>
-            </div>
-  
-            <!-- FAQ Item 3 -->
-            <div class="bg-sangkolo-black rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center p-4 text-left">
-                <span class="font-medium">Bagaimana cara menentukan ukuran yang tepat?</span>
-                <span class="text-xl">+</span>
-              </button>
-              <div class="faq-content hidden px-4 pb-4 text-sangkolo-light">
-                <p>Kami menyediakan panduan ukuran detail untuk semua produk. Anda juga bisa meminta sample ukuran sebelum memesan dalam jumlah banyak. Untuk kaos couple/family, kami sarankan memilih satu ukuran lebih besar dari biasanya.</p>
-              </div>
-            </div>
-  
-            <!-- FAQ Item 4 -->
-            <div class="bg-sangkolo-black rounded-lg overflow-hidden">
-              <button class="faq-toggle w-full flex justify-between items-center p-4 text-left">
-                <span class="font-medium">Apakah bisa pesan kaos dengan sablon manual?</span>
-                <span class="text-xl">+</span>
-              </button>
-              <div class="faq-content hidden px-4 pb-4 text-sangkolo-light">
-                <p>Kami khusus menggunakan teknologi DTG (Direct to Garment) yang lebih presisi, tahan lama, dan bisa mencetak desain full color dengan detail tinggi. Sablon manual hanya kami sarankan untuk pesanan sangat besar (>500 pcs) dengan desain sederhana.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <!-- CTA -->
-      <div class="bg-sangkolo-black rounded-xl p-8 text-center">
-        <h2 class="text-3xl font-bold mb-4">SIAP MEMBUAT KAOS CUSTOM ANDA?</h2>
-        <p class="text-xl text-sangkolo-light mb-6 max-w-2xl mx-auto">Mulai dari 1 kaos sampai ribuan, kami siap mewujudkan desain kaos impian Anda</p>
-        <button class="bg-sangkolo-light text-sangkolo-black font-bold py-3 px-8 rounded-lg hover:bg-white transition duration-300">
-          PESAN SEKARANG
-        </button>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+@push('styles')
+<style>
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // FAQ Toggle
-      document.querySelectorAll('.faq-toggle').forEach(button => {
-        button.addEventListener('click', function() {
-          const content = this.nextElementSibling;
-          const icon = this.querySelector('span:last-child');
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+    33% { transform: translateY(-15px) rotate(120deg) scale(1.1); }
+    66% { transform: translateY(-25px) rotate(240deg) scale(0.9); }
+  }
+  
+  @keyframes float-fast {
+    0%, 100% { transform: translateX(0px) translateY(0px); }
+    25% { transform: translateX(10px) translateY(-10px); }
+    50% { transform: translateX(-5px) translateY(-20px); }
+    75% { transform: translateX(15px) translateY(-5px); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+  
+  .animate-float-medium {
+    animation: float-medium 4s ease-in-out infinite;
+  }
+  
+  .animate-float-fast {
+    animation: float-fast 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Efek untuk gambar aktif */
+  .image-glow {
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float-slow,
+    .animate-float-medium,
+    .animate-float-fast,
+    .animate-pulse-glow {
+      animation: none;
+    }
+  }
+</style>
+@endpush
+
+@push('scripts')
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const rotator = document.querySelector('[data-rotator]');
+    if (!rotator) return;
+
+    const items = Array.from(rotator.querySelectorAll('[data-rotator-item]'));
+    const floatingElements = Array.from(rotator.querySelectorAll('[data-float-1], [data-float-2], [data-float-3]'));
+    
+    if (items.length <= 1) return;
+
+    let currentIndex = 0;
+    const intervalTime = 4000; // Lebih lambat untuk efek yang lebih smooth
+    let intervalId = null;
+
+    // Array efek transisi yang berbeda-beda
+    const transitions = [
+      // Efek zoom + fade
+      {
+        out: (item) => {
+          item.classList.add('opacity-0', 'scale-125', 'blur-md');
+          item.classList.remove('opacity-100', 'scale-100', 'blur-0');
+        },
+        in: (item) => {
+          item.classList.remove('opacity-0', 'scale-95', 'blur-sm');
+          item.classList.add('opacity-100', 'scale-100', 'blur-0');
+        }
+      },
+      // Efek rotate + slide
+      {
+        out: (item) => {
+          item.classList.add('opacity-0', 'rotate-12', 'translate-x-8');
+          item.classList.remove('opacity-100', 'rotate-0');
+        },
+        in: (item) => {
+          item.classList.remove('opacity-0', 'rotate-3', 'blur-sm');
+          item.classList.add('opacity-100', 'rotate-0', 'blur-0');
+        }
+      },
+      // Efek flip + scale
+      {
+        out: (item) => {
+          item.classList.add('opacity-0', 'scale-75', '-rotate-6', 'blur-lg');
+          item.classList.remove('opacity-100', 'scale-100', 'rotate-0', 'blur-0');
+        },
+        in: (item) => {
+          item.classList.remove('opacity-0', 'scale-110', '-rotate-2', 'blur-sm');
+          item.classList.add('opacity-100', 'scale-100', 'rotate-0', 'blur-0');
+        }
+      }
+    ];
+
+    function setActive(nextIndex) {
+      const currentItem = items[currentIndex];
+      const nextItem = items[nextIndex];
+      
+      // Pilih efek transisi secara acak
+      const transition = transitions[Math.floor(Math.random() * transitions.length)];
+      
+      // Hapus efek glow dari item saat ini
+      currentItem.classList.remove('image-glow');
+      
+      // Terapkan efek keluar
+      transition.out(currentItem);
+      
+      // Setelah delay singkat, terapkan efek masuk
+      setTimeout(() => {
+        transition.in(nextItem);
+        // Tambahkan efek glow ke item baru
+        nextItem.classList.add('image-glow');
+        
+        // Animasi floating elements
+        animateFloatingElements();
+      }, 200);
+
+      currentIndex = nextIndex;
+    }
+
+    function animateFloatingElements() {
+      // Random animasi untuk floating elements
+      floatingElements.forEach((element, index) => {
+        const randomDelay = Math.random() * 1000;
+        const randomDuration = 2000 + (Math.random() * 2000);
+        
+        setTimeout(() => {
+          element.style.transition = `transform ${randomDuration}ms ease-in-out`;
+          const randomX = (Math.random() - 0.5) * 40;
+          const randomY = (Math.random() - 0.5) * 40;
+          const randomRotate = Math.random() * 360;
+          const randomScale = 0.8 + (Math.random() * 0.4);
           
-          // Toggle content
-          content.classList.toggle('hidden');
+          element.style.transform = `translateX(${randomX}px) translateY(${randomY}px) rotate(${randomRotate}deg) scale(${randomScale})`;
           
-          // Change icon
-          if (content.classList.contains('hidden')) {
-            icon.textContent = '+';
-          } else {
-            icon.textContent = '-';
-          }
-          
-          // Close other FAQs
-          document.querySelectorAll('.faq-content').forEach(item => {
-            if (item !== content && !item.classList.contains('hidden')) {
-              item.classList.add('hidden');
-              item.previousElementSibling.querySelector('span:last-child').textContent = '+';
-            }
-          });
+          // Reset setelah animasi selesai
+          setTimeout(() => {
+            element.style.transform = '';
+          }, randomDuration);
+        }, randomDelay);
+      });
+    }
+
+    function rotate() {
+      const nextIndex = (currentIndex + 1) % items.length;
+      setActive(nextIndex);
+    }
+
+    function play() {
+      if (intervalId) return;
+      intervalId = setInterval(rotate, intervalTime);
+    }
+
+    function stop() {
+      if (!intervalId) return;
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+
+    // Inisialisasi
+    setActive(0);
+    items[0].classList.add('image-glow');
+    play();
+
+    // Pause saat hover dengan efek visual
+    rotator.addEventListener('mouseenter', () => {
+      stop();
+      rotator.style.transform = 'scale(1.02)';
+      rotator.style.transition = 'transform 0.3s ease';
+    });
+    
+    rotator.addEventListener('mouseleave', () => {
+      play();
+      rotator.style.transform = 'scale(1)';
+    });
+
+    // Respect prefers-reduced-motion
+    try {
+      const prm = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (prm.matches) {
+        stop();
+        // Matikan floating animations
+        floatingElements.forEach(el => {
+          el.style.animation = 'none';
         });
+      }
+      
+      const handleChange = (e) => {
+        if (e.matches) {
+          stop();
+          floatingElements.forEach(el => {
+            el.style.animation = 'none';
+          });
+        } else {
+          play();
+          floatingElements.forEach((el, index) => {
+            const animations = ['animate-float-slow', 'animate-float-medium', 'animate-float-fast'];
+            el.className = el.className.replace(/animate-float-\w+/, animations[index]);
+          });
+        }
+      };
+
+      if (prm.addEventListener) {
+        prm.addEventListener('change', handleChange);
+      } else if (prm.addListener) {
+        prm.addListener(handleChange);
+      }
+    } catch (_) {}
+
+    // Tambahkan interaksi click untuk manual navigation
+    items.forEach((item, index) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (index !== currentIndex) {
+          stop();
+          setActive(index);
+          setTimeout(play, 1000); // Resume setelah 1 detik
+        }
       });
     });
-  </script>
+  });
+</script>
+@endpush
 @endsection

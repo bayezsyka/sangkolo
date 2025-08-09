@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sangkolo</title>
-    @include('layouts.partials.sweetalert')
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sangkolo</title>
+  @include('layouts.partials.sweetalert')
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased bg-gray-100 text-sangkolo-dark">
-    
-    <div class="min-h-screen flex flex-col">
-        
-        @include('layouts.header')
+<body class="font-sans antialiased bg-[#FAF9F6] text-sangkolo-dark">
+  <div class="min-h-screen flex flex-col">
+    @include('layouts.header')
 
-        <main class="flex-grow">
-            @yield('content')
-        </main>
+    <main class="flex-grow">
+      @yield('content')
+    </main>
 
-        @include('layouts.footer')
+    @include('layouts.footer')
+  </div>
 
-    </div>
+  <x-development-modal />
 
-    <x-development-modal />
+  {{-- penting: tempat script dari @push('scripts') --}}
+  @stack('scripts')
 </body>
 </html>

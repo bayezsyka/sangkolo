@@ -1,7 +1,11 @@
+@import 'sweetalert2/src/sweetalert2.scss';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'sweetalert2/src/sweetalert2.scss';
+
+/* Prevent FOUC for Alpine.js */
+[x-cloak] { display: none !important; }
 
 /* CSS untuk Modal dengan metode :target */
 .modal-target {

@@ -12,7 +12,7 @@
       <p class="mt-4 max-w-md text-sm sm:text-base text-gray-600">Melayani apa saja yang bisa kita layani. Mengerjakan apa saja yang bisa kita kerjakan.</p>
 
       <!-- Two simple white cards -->
-      <div class="mt-6 grid grid-cols-2 gap-3 max-w-xs">
+      <div class="mt-6 grid grid-cols-3 gap-3 max-w-s">
         <a class="flex flex-col items-center justify-center rounded-lg bg-white px-3 py-4 sm:px-4 sm:py-5 text-center shadow hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-orange-300">
           <span class="text-sm sm:text-base font-bold text-black mb-1">Kaos Custom</span>
           <span class="text-[10px] sm:text-xs text-gray-700">Pesan kaos sesuai desainmu</span>
@@ -21,6 +21,10 @@
           <span class="text-sm sm:text-base font-bold text-black mb-1">Joki Tugas</span>
           <span class="text-[10px] sm:text-xs text-gray-700">Bantu selesaikan pekerjaanmu</span>
         </a>
+        <a class="flex flex-col items-center justify-center rounded-lg bg-white px-3 py-4 sm:px-4 sm:py-5 text-center shadow hover:shadow-md transition-shadow focus:outline-none focus:ring-2 focus:ring-orange-300">
+            <span class="text-sm sm:text-base font-bold text-black mb-1">Jasa Arsitek</span>
+            <span class="text-[10px] sm:text-xs text-gray-700">Mulai dari tugas kuliah sampai profesional</span>
+          </a>
       </div>
     </div>
 
@@ -36,7 +40,7 @@
 
 <!-- Testimonials Section – simpler, 2 columns on tablet & below, slim spacing -->
 <section class="py-10 sm:py-12 lg:py-16 bg-[#FAF9F6]">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl md:max-w-4xl">
     <div class="text-center mb-8 sm:mb-10 lg:mb-12">
       <span class="inline-block px-3 py-1.5 text-xs sm:text-sm font-semibold text-sangkolo-mid bg-sangkolo-mid/10 rounded-full animate-slide-up">Testimonial</span>
       <h2 class="mt-3 sm:mt-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-sangkolo-black animate-fade-in">Apa Kata Klien Kami</h2>
@@ -80,7 +84,8 @@
     const images = [
       '{{ asset('image/kaosalanwar.png') }}',
       '{{ asset('image/kaosbidah.png') }}',
-      '{{ asset('image/kubahkaos.png') }}'
+      '{{ asset('image/kubahkaos.png') }}',
+      '{{ asset('image/rumah.png') }}'
     ];
     const DURATION = 2500;
     const FADE = 700;
