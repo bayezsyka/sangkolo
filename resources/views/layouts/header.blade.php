@@ -83,7 +83,7 @@ Drop this inside your layout where Tailwind + Alpine are available.
          class="md:hidden border-t"
          :class="scrolled ? 'border-neutral-800 bg-neutral-900 text-white' : 'border-neutral-200 bg-[#FAF9F6] text-neutral-900'">
       <div class="px-3 sm:px-4 py-3 space-y-1">
-        <a href="{{ url('/kaoscustom') }}" class="block px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-neutral-500/40 hover:opacity-80">Kaos Custom</a>
+        <a href="{{ url('/kaos') }}" class="block px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-neutral-500/40 hover:opacity-80">Kaos Custom</a>
         <a href="{{ route('joki-tugas.index') }}" class="block px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-neutral-500/40 hover:opacity-80">Joki Tugas</a>
         <a href="https://wa.me/6285161603362" class="block mt-1 px-3 py-2 rounded-md text-sm font-semibold text-center"
            :class="scrolled ? 'bg-white text-neutral-900 hover:bg-neutral-100' : 'bg-neutral-900 text-white hover:bg-neutral-800'">
